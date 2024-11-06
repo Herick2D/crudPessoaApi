@@ -34,7 +34,7 @@ public class PessoaService {
     public ResponseEntity<PessoaModel> findPessoaById(UUID id) {
         Optional<PessoaModel> optionalPessoal = pessoaRepository.findById(id);
         if (optionalPessoal.isEmpty()) {
-            throw new EntityNotFoundException("Pessoa com o ID " + id + "não encontrado.");
+            throw new EntityNotFoundException("Pessoa com o ID " + id + " não encontrado.");
         }
         return ResponseEntity.status(HttpStatus.OK).body(optionalPessoal.get());
     }
