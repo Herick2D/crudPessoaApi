@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,5 +28,10 @@ public class PessoaController {
     @GetMapping("/{id}")
     public ResponseEntity<PessoaModel> getPessoaById(@PathVariable UUID id) {
         return pessoaService.findPessoaById(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PessoaDTO> updatePessoa(@PathVariable UUID id, @RequestBody PessoaModel pessoa) {
+        return pessoaService.updatePessoa(id, pessoa);
     }
 }

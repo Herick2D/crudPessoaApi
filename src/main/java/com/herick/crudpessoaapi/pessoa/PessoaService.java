@@ -38,4 +38,16 @@ public class PessoaService {
         }
         return ResponseEntity.status(HttpStatus.OK).body(optionalPessoal.get());
     }
+
+    public ResponseEntity<PessoaDTO> updatePessoa(UUID id, PessoaModel pessoa) {
+        PessoaModel optionalPessoa = findPessoaById(id).getBody();
+
+        optionalPessoa.setNome(pessoa.getNome());
+        optionalPessoa.setEmail(pessoa.getEmail());
+        optionalPessoa.setNascimento(pessoa.getNascimento());
+
+        var toDTO = pessoaRepository.save(optionalPessoa);
+        var result = createDTO(toDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
 }
