@@ -1,4 +1,6 @@
 package com.herick.crudpessoaapi.pessoa;
 
-public record PessoaDTO() {
+import java.time.LocalDate;
+
+public record PessoaDTO(String nome, String email, LocalDate nascimento) {
 }
