@@ -22,6 +22,6 @@ public class PessoaModel {
     private String email;
 
     @Column(name = "data_de_nascimento")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy") // regra para adicionar a data de nascimento no padrão brasileiro dd-mm-aaaa
     private LocalDate nascimento;
 }
