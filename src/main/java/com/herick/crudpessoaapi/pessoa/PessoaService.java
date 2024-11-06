@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -52,11 +53,20 @@ public class PessoaService {
     }
 
     public ResponseEntity<?> deletePessoa(UUID id) {
+        Optional<PessoaModel> optionalPessoa = pessoaRepository.findById(id);
+        if (optionalPessoa.isEmpty()) {
+            throw new EntityNotFoundException("Pessoa com ID " + id + " não encontrado");
+        }
         try {
             pessoaRepository.deleteById(id);
         } catch (Exception e) {
             throw new EntityNotFoundException(e);
         }
         return ResponseEntity.noContent().build();
+    }
+
+    public ResponseEntity<List<PessoaModel>> findPessoas() {
+        List<PessoaModel> pessoas = pessoaRepository.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(pessoas);
     }
 }

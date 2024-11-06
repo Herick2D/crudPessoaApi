@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping({"/pessoa", "/pessoas"})
+@RequestMapping({"/pessoa"})
 @AllArgsConstructor
 public class PessoaController {
 
