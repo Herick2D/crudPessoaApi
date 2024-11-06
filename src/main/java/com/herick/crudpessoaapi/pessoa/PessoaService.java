@@ -50,4 +50,13 @@ public class PessoaService {
         var result = createDTO(toDTO);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
+
+    public ResponseEntity<?> deletePessoa(UUID id) {
+        try {
+            pessoaRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new EntityNotFoundException(e);
+        }
+        return ResponseEntity.noContent().build();
+    }
 }

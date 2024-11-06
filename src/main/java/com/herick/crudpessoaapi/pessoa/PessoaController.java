@@ -2,6 +2,7 @@ package com.herick.crudpessoaapi.pessoa;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,5 +34,10 @@ public class PessoaController {
     @PutMapping("/{id}")
     public ResponseEntity<PessoaDTO> updatePessoa(@PathVariable UUID id, @RequestBody PessoaModel pessoa) {
         return pessoaService.updatePessoa(id, pessoa);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletePessoa(@PathVariable UUID id) {
+        return pessoaService.deletePessoa(id);
     }
 }
