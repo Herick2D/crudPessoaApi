@@ -5,7 +5,6 @@ services:
     container_name: mysql-db
     environment:
       MYSQL_DATABASE: pessoaapi
-      MYSQL_USER: root
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
